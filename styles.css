@@ -20,7 +20,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--bg-primary);
-    color: var (--text-primary);
+    color: var(--text-primary);
     font-family: 'Consolas', monospace;
     font-size: 16px;
 }
@@ -50,8 +50,8 @@ footer {
 
 /* Hamburger menu */
 .hamburger {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 3rem;
+    height: 3rem;
     position: fixed;
     top: 1rem;
     right: 1rem;
@@ -73,49 +73,53 @@ footer {
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    -webkit-transition: transform 0.3s ease, opacity 0.3s ease;
-    -moz-transition: transform 0.3s ease, opacity 0.3s ease;
-    -ms-transition: transform 0.3s ease, opacity 0.3s ease;
-    -o-transition: transform 0.3s ease, opacity 0.3s ease;
+    -webkit-transition:;
+    -moz-transition:;
+    -ms-transition:;
+    -o-transition:;
 }
 
 .ham-menu span:nth-child(1) {
-    top: 25%;
+    top: 35%;
 }
 
 .ham-menu span:nth-child(2) {
     top: 50%;
     transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
+    -webkit-transform:;
+    -moz-transform:;
+    -ms-transform:;
+    -o-transform:;
 }
 
 .ham-menu span:nth-child(3) {
-    top: 75%;
+    top: 65%;
 }
 
-.ham-menu.active span:nth-child(1) {
+/* Labels cannot be checked! */
+.menu-toggle:checked + .ham-menu span:nth-child(1) {
     transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
+    -webkit-transform:;
+    -moz-transform:;
+    -ms-transform:;
+    -o-transform:;
     top:50%;
+    color: yellow;
 }
 
-.ham-menu.active span:nth-child(2) {
+.menu-toggle:checked + .ham-menu span:nth-child(2) {
 opacity: 0;
+color: yellow;
 }
 
-.ham-menu.active span:nth-child(3) {
+.menu-toggled:checked + .ham-menu span:nth-child(3) {
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
+    -webkit-transform:;
+    -moz-transform:;
+    -ms-transform:;
+    -o-transform:;
     top:50%;
+    color: yellow;
 }
 
 .off-screen-menu {
@@ -134,15 +138,48 @@ opacity: 0;
     margin: 0;
 }
 
-.menu-toogle {
+.menu-toggle {
     display: none;
 }
 
-.menu-toogle:checked ~ .off-screen-menu {
+/* This ~:  targets the menu div that is a later sibling */
+.menu-toggle:checked ~ .off-screen-menu {
     display: flex;
 }
 
-.menu-toogle:checked + .ham-menu {
+.menu-toggle:checked ~ .off-screen-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+.menu-toggle:checked ~ .off-screen-menu ul li a {
+    font-size: 2rem;
+    color: var(--accent-aqua);
+    text-decoration: none;
+    padding: var(--space-sm) var(--space-md);
+    border: 2px solid var(--accent-aqua);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    -webkit-transition: background-color 0.5s ease, color 0.5s ease;
+    -moz-transition: background-color 0.5s ease, color 0.5s ease;
+    -ms-transition: background-color 0.5s ease, color 0.5s ease;
+    -o-transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.menu-toggle:checked ~ .off-screen-menu ul li a:hover {
+    background-color: var(--accent-aqua);
+    color: var(--text-primary);
+    font-weight: bolder;
+}
+
+.menu-toggle:checked + .ham-menu {
     position: fixed;
     top: 1rem;
     right: 1rem;
@@ -197,4 +234,16 @@ opacity: 0;
     color: var(--text-primary);
     font-weight: bolder;
 }
+#contact-form {
+    background-color: var(--bg-secondary);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
